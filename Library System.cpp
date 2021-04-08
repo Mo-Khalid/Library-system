@@ -10,8 +10,8 @@
 using namespace std;
 
 //Common Variables
-int select; int add_book = 1; int add_user = 1;
-string book_to_search; string category_to_find;
+int select; int add_book = 1; int add_user = 1; int borrow_count = 0;
+string book_to_search; string category_to_find; string book_user;
 char y_or_n;
 
 //Struct for Books
@@ -41,10 +41,16 @@ struct user {
 	}
 	
 };
+struct borrowd {
+	string borrow_book;
+	string borrow_user;
+};
 
-//Arrays 
+//Arrays and variables based on struct
 book Books_array[100];
 user Users_array[100];
+borrowd Borrows_array[100];
+borrowd b_book;
 
 //Function to find book
 void search_for_book(string book_to_search) {
@@ -72,7 +78,6 @@ void search_for_category(string category_to_find) {
 				cout << "category isn't found" << endl;
 			}
 		}
-
 	}
 }
 
@@ -103,6 +108,7 @@ jump:
 		break;
 
 	case 2:
+		add_user :
 		Users_array[add_user].read_user();
 		add_user++;
 		break;
@@ -111,6 +117,36 @@ jump:
 		break;
 	case 4 :
 		search_for_category(category_to_find);
+		break;
+	case 5:
+		//Remember to remove book from array
+		cout << "Enter Book's name , User's name : " << endl;
+		cin >> b_book.borrow_book >> b_book.borrow_user;
+		//Check user
+		for (int i = 1; i < add_user; i++) {
+			if (b_book.borrow_user != Users_array[i].user_name) {
+				cout << "User isn't found, You can add it : " << endl;
+				goto add_user;
+			}
+		}
+		//Borrow
+			for (int i = 1; i <= add_book; i++) {
+				if (Books_array[i].book_name == b_book.borrow_book){
+					Borrows_array[borrow_count++] = b_book;
+				cout << " Book has been borrowd ! " << endl;
+				}
+				else
+					cout << "Book isn't found ! " << endl;
+			}
+		break;
+	case 7 :
+		cout << " Enter book name : " << endl;
+		cin >> book_user;
+		for (int i = 0; i < borrow_count; i++) {
+			if (Borrows_array[i].borrow_book == book_user) {
+				cout << "The user is : " << Borrows_array[i].borrow_user << endl;
+			}
+		}
 		break;
 	case 8:
 		for (int k = 1; k < add_user; k++) {
