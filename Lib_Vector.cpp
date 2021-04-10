@@ -128,14 +128,14 @@ jump:
 		cout << "Enter Book's name , User's name : " << endl;
 		cin >> b_book.borrow_book >> b_book.borrow_user;
 		//Check user
-		for (int i = 1; i < User_vector.capacity; i++) {
+		for (int i = 0; i < User_vector.capacity; i++) {
 			if (b_book.borrow_user != User_vector[i].user_name) {
 				cout << "User isn't found, You can add it : " << endl;
 				goto add_user;
 			}
 		}
 		//Borrow progress
-		for (int i = 1; i <= Books_vector.capacity; i++) {
+		for (int i = 0; i <= Books_vector.capacity; i++) {
 			if (Books_vector[i].book_name == b_book.borrow_book) {
 				Borrow_vector.push_back(b_book);
 				Books_vector.erase(Books_vector.begin() + i);
