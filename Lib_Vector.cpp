@@ -68,11 +68,11 @@ void print_users(vector <user> &User_vector) {
 void search_for_book(string book_to_search) {
 	cout << "Enter book's name" << endl;
 	cin >> book_to_search;
-	for (int i = 0; i < Books_vector.capacity; i++) {
+	for (int i = 0; i < Books_vector.capacity(); i++) {
 		if (Books_vector[i].book_name == book_to_search) {
 			cout << " Book Found : " << book_to_search << endl;
 		}
-		else if (i == Books_vector.capacity)
+		else if (i == Books_vector.capacity())
 			cout << " Book isn't found ! " << endl;
 	}
 }
@@ -80,13 +80,13 @@ void search_for_book(string book_to_search) {
 void print_by_category(string category_to_print) {
 	cout << "Enter category" << endl;
 	cin >> category_to_print;
-	for (int i = 0; i < Books_vector.capacity; i++) {
+	for (int i = 0; i < Books_vector.capacity(); i++) {
 		if (Books_vector[i].book_category == category_to_print) {
 			cout << Books_vector[i].book_name;
 		}
 	}
 }
-	
+
 int main()
 {
 	//Show library operations
@@ -107,7 +107,7 @@ jump:
 	switch (select)
 	{
 	case 1:
-		add_book :
+	add_book:
 		new_book.read_book();
 		Books_vector.push_back(new_book);
 		break;
@@ -128,14 +128,14 @@ jump:
 		cout << "Enter Book's name , User's name : " << endl;
 		cin >> b_book.borrow_book >> b_book.borrow_user;
 		//Check user
-		for (int i = 0; i < User_vector.capacity; i++) {
+		for (int i = 0; i < Books_vector.capacity(); i++) {
 			if (b_book.borrow_user != User_vector[i].user_name) {
 				cout << "User isn't found, You can add it : " << endl;
 				goto add_user;
 			}
 		}
 		//Borrow progress
-		for (int i = 0; i <= Books_vector.capacity; i++) {
+		for (int i = 0; i <= Books_vector.capacity(); i++) {
 			if (Books_vector[i].book_name == b_book.borrow_book) {
 				Borrow_vector.push_back(b_book);
 				Books_vector.erase(Books_vector.begin() + i);
@@ -147,7 +147,7 @@ jump:
 		cout << "Enter Book's name , User's name : " << endl;
 		cin >> b_book.borrow_book >> b_book.borrow_user;
 		//Remove from Borrow
-		for (int i = 1; i <= Borrow_vector.capacity; i++) {
+		for (int i = 1; i <= Books_vector.capacity(); i++) {
 			if (Borrow_vector[i].borrow_book == b_book.borrow_book) {
 				Borrow_vector.erase(Borrow_vector.begin() + i);
 				cout << " Now, please add the book again ! " << endl;
@@ -157,7 +157,7 @@ jump:
 	case 7:
 		cout << " Enter book name : " << endl;
 		cin >> book_user;
-		for (int i = 0; i < Borrow_vector.capacity; i++) {
+		for (int i = 0; i < Books_vector.capacity(); i++) {
 			if (Borrow_vector[i].borrow_book == book_user) {
 				cout << "The user is : " << Borrow_vector[i].borrow_user << endl;
 			}
@@ -182,4 +182,3 @@ jump:
 	system("Pause");
 	return 0;
 }
-
