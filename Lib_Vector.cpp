@@ -55,6 +55,11 @@ borrowd b_book;
 
 //Function to print users
 void print_users(vector <user> &User_vector) {
+	cout << "Users of library : " << endl;
+	for (int i = 0; i < User_vector.capacity(); i++) {
+		cout << " User id : " << User_vector[i].user_id << " User Name : " << User_vector[i].user_name<< endl;
+	}
+	/*
 	vector<user>::iterator it;
 	cout << " Users of library :" << endl;
 	it = User_vector.begin();
@@ -62,6 +67,7 @@ void print_users(vector <user> &User_vector) {
 		cout << it - User_vector.begin() << endl;
 		it++;
 	}
+	*/
 }
 
 //Function to find book
@@ -165,8 +171,9 @@ jump:
 		break;
 	case 8:
 		print_users(User_vector);
-	break_code:
+		break;
 	case 9:
+	break_code:
 		return 0;
 	}
 
