@@ -149,10 +149,10 @@ jump:
 		cout << "Enter Book's name , User's name : " << endl;
 		cin >> b_book.borrow_book >> b_book.borrow_user;
 		//Remove from Borrow
-		for (int i = 1; i <= Books_vector.size(); i++) {
+		for (int i = 0; i <= Books_vector.size(); i++) {
 			if (Borrow_vector[i].borrow_book == b_book.borrow_book) {
 				Borrow_vector.erase(Borrow_vector.begin() + i);
-				cout << " Now, please add the book again ! " << endl;
+				cout << " Now, please add the Book again ! " << endl;
 				goto add_book;
 			}
 		}
