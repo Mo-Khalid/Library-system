@@ -73,13 +73,13 @@ void print_users(vector <user> &User_vector) {
 
 //Function to search for book
 void search_for_book(string book_to_search) {
-	cout << " Enter Book's Name : " << endl;
+	cout << "Enter Book's Name : " << endl;
 	cin >> book_to_search;
 	for (int i = 0; i < Books_vector.size(); i++) {
 		if (Books_vector[i].book_name == book_to_search) {
 			cout << " Book Found : " << book_to_search << endl;
-			cout << "It's ID : " << Books_vector[i].book_id<<" ";
-			cout << "It's Category : " << Books_vector[i].book_category << endl;
+			cout << " It's ID : " << Books_vector[i].book_id<<",";
+			cout << " It's Category : " << Books_vector[i].book_category << endl;
 		}
 		else if (i == Books_vector.size())
 			cout << " Book isn't found ! " << endl;
@@ -87,7 +87,7 @@ void search_for_book(string book_to_search) {
 }
 //Founction to print by category
 void print_by_category(string category_to_print) {
-	cout << " Enter Category : " << endl;
+	cout << "Enter Category : " << endl;
 	cin >> category_to_print;
 	for (int i = 0; i < Books_vector.size(); i++) {
 		if (Books_vector[i].book_category == category_to_print) {
@@ -110,7 +110,7 @@ int main()
 	cout << "[8] print Users" << endl;
 	cout << "[9] Exit" << endl;
 jump:
-	cout << endl << " Enter number of operation :  " << endl;
+	cout << endl << "Enter number of operation :  " << endl;
 	cin >> select;
 
 	//Main operations 
@@ -158,7 +158,7 @@ jump:
 		}
 		break;
 	case 7:
-		cout << " Enter Book name : " << endl;
+		cout << "Enter Book name : " << endl;
 		cin >> book_user;
 		for (int i = 0; i <= Books_vector.size(); i++) {
 			if (Borrow_vector[i].borrow_book == book_user) {
@@ -175,7 +175,7 @@ jump:
 	}
 
 	//Function to do another operation
-	cout << " Do you want to perform another operation ? [Y] - [N] " << endl;
+	cout << "Do you want to perform another operation ? [Y] - [N] " << endl;
 	y_or_n = _getche();
 	if (y_or_n == 'y' || y_or_n == 'Y')
 		goto jump;
