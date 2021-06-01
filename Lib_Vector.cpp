@@ -1,6 +1,6 @@
 //Simple library system
 
-#include "stdafx.h"
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -17,12 +17,16 @@ char y_or_n;
 
 //Struct for Books
 struct book {
+
 	int book_id; int book_quantity;
 	string book_name; string book_category;
 
 	void read_book() {
 		cout << "Enter Book_ID , Book_name , Book_Category " << endl;
-		cin >> book_id >> book_name >> book_category;
+		cin >> book_id;
+		cin.ignore();
+		getline(cin, book_name);
+		getline(cin, book_category);
 	}
 };
 
@@ -33,7 +37,10 @@ struct user {
 
 	void read_user() {
 		cout << "Enter User_ID , User_Name " << endl;
-		cin >> user_id >> user_name;
+		cin >> user_id;
+		cin.ignore();
+		getline(cin, user_name);
+
 	}
 
 };
@@ -57,28 +64,20 @@ borrowd b_book;
 void print_users(vector <user> &User_vector) {
 	cout << " Users of library : " << endl;
 	for (int i = 0; i < User_vector.size(); i++) {
-		cout << " User ID : " << User_vector[i].user_id<<",";
+		cout << " User ID : " << User_vector[i].user_id << ",";
 		cout << " User Name : " << User_vector[i].user_name << endl;
 	}
-	/*
-	vector<user>::iterator it;
-	cout << " Users of library :" << endl;
-	it = User_vector.begin();
-	while (it != User_vector.end()) {
-		cout << it << endl;
-		it++;
-	}
-	*/
 }
 
 //Function to search for book
 void search_for_book(string book_to_search) {
 	cout << "Enter Book's Name : " << endl;
-	cin >> book_to_search;
+	cin.ignore();
+	getline(cin, book_to_search);
 	for (int i = 0; i < Books_vector.size(); i++) {
 		if (Books_vector[i].book_name == book_to_search) {
 			cout << " Book Found : " << book_to_search << endl;
-			cout << " It's ID : " << Books_vector[i].book_id<<",";
+			cout << " It's ID : " << Books_vector[i].book_id << ",";
 			cout << " It's Category : " << Books_vector[i].book_category << endl;
 		}
 		else if (i == Books_vector.size())
@@ -88,10 +87,11 @@ void search_for_book(string book_to_search) {
 //Founction to print by category
 void print_by_category(string category_to_print) {
 	cout << "Enter Category : " << endl;
-	cin >> category_to_print;
+	cin.ignore();
+	getline(cin, category_to_print);
 	for (int i = 0; i < Books_vector.size(); i++) {
 		if (Books_vector[i].book_category == category_to_print) {
-			cout << " Book Name : "<< Books_vector[i].book_name << ",";
+			cout << " Book Name : " << Books_vector[i].book_name << ",";
 			cout << " Book ID : " << Books_vector[i].book_id << endl;
 		}
 	}
@@ -135,7 +135,10 @@ jump:
 		break;
 	case 5:
 		cout << "Enter Book's name , User's name : " << endl;
-		cin >> b_book.borrow_book >> b_book.borrow_user;
+		cin.ignore();
+		getline(cin, b_book.borrow_book);
+		cin.ignore();
+		getline(cin, b_book.borrow_user);
 		//Borrow progress
 		for (int i = 0; i <= Books_vector.size(); i++) {
 			if (Books_vector[i].book_name == b_book.borrow_book) {
@@ -147,7 +150,10 @@ jump:
 		break;
 	case 6:
 		cout << "Enter Book's name , User's name : " << endl;
-		cin >> b_book.borrow_book >> b_book.borrow_user;
+		cin.ignore();
+		getline(cin, b_book.borrow_book);
+		cin.ignore();
+		getline(cin, b_book.borrow_user);
 		//Remove from Borrow
 		for (int i = 0; i <= Books_vector.size(); i++) {
 			if (Borrow_vector[i].borrow_book == b_book.borrow_book) {
@@ -159,7 +165,8 @@ jump:
 		break;
 	case 7:
 		cout << "Enter Book name : " << endl;
-		cin >> book_user;
+		cin.ignore();
+		getline(cin, book_user);
 		for (int i = 0; i <= Books_vector.size(); i++) {
 			if (Borrow_vector[i].borrow_book == book_user) {
 				cout << "The User is : " << Borrow_vector[i].borrow_user << endl;
